@@ -6,7 +6,7 @@ module.exports = {
     .setName("shutdown")
     .setDescription("Shuts off the bot."),
   async execute(interaction) {
-    if (interaction.member.id == parseFloat(ownerId)) {
+    if (interaction.member.id == ownerId) {
       await interaction.reply("Shutting down...");
       console.log("Shutting down...");
       await interaction.client.destroy();
