@@ -1,6 +1,6 @@
-# stuff i need to do
+# TODO
 
-[x] get the bot working
+[ ] get the bot working
 
 [ ] daily reset leaderboard maybe
 

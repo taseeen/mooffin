@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { ownerId } = require("../config.json");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -7,7 +8,12 @@ module.exports = {
     .setDescription("Shuts off the bot."),
   async execute(interaction) {
     if (interaction.member.id == ownerId) {
-      await interaction.reply("Shutting down...");
+      shutdown_embed = new MessageEmbed()
+        .setDescription("Shutting down...")
+        .setColor("GREY");
+      await interaction.reply({
+        embeds: [shutdown_embed],
+      });
       console.log("Shutting down...");
       await interaction.client.destroy();
     } else {
