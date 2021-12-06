@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
-const { token } = require("./config.json");
+const { token } = require("./json/config.json");
+const userData = require("./json/userData.json");
 
 const client = new Client({
   intents: [
@@ -12,6 +13,7 @@ const client = new Client({
 });
 
 client.commands = new Collection();
+client.userData = userData;
 
 const commandFiles = fs
   .readdirSync("./commands")
@@ -22,7 +24,7 @@ const eventFiles = fs
   .filter((file) => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const { command } = require(`./commands/${file}`);
   client.commands.set(command.data.name, command);
 }
 
@@ -35,4 +37,5 @@ for (const file of eventFiles) {
   }
 }
 
+exports.client = client;
 client.login(token);

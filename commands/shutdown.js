@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { ownerId } = require("../config.json");
+const { ownerId } = require("../json/config.json");
 const { MessageEmbed } = require("discord.js");
 
-module.exports = {
+exports.command = {
   data: new SlashCommandBuilder()
     .setName("shutdown")
     .setDescription("Shuts off the bot."),
