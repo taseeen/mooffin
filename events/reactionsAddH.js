@@ -7,17 +7,18 @@ module.exports = {
       messageReaction.emoji.name === "❤️" &&
       user.id != messageReaction.message.author.id
     ) {
-      authorID = messageReaction.message.author.id;
-      client = user.client;
-      if (client.userData.hasOwnProperty(authorID.toString())) {
-        client.userData[authorID.toString()]["hearts"] += 1;
+      const client = user.client;
+      const author = messageReaction.message.author;
+      if (client.userData.hasOwnProperty(author.id.toString())) {
+        client.userData[author.id.toString()]["hearts"] += 1;
       } else {
-        client.userData[authorID.toString()] = {
+        client.userData[author.id.toString()] = {
           hearts: 0,
           stars: 0,
-          emoji: ":heart:",
+          heartEmoji: ":heart:",
+          starEmoji: ":star:",
         };
-        client.userData[authorID.toString()]["hearts"] += 1;
+        client.userData[author.id.toString()]["hearts"] += 1;
       }
       fs.writeFile(
         "json/userData.json",

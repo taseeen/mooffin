@@ -5,7 +5,7 @@ const { MessageEmbed } = require("discord.js");
 exports.command = {
   data: new SlashCommandBuilder()
     .setName("shutdown")
-    .setDescription("Shuts off the bot."),
+    .setDescription("Shuts off the bot"),
   async execute(interaction) {
     if (interaction.member.id == ownerId) {
       shutdown_embed = new MessageEmbed()

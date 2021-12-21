@@ -14,6 +14,7 @@ const client = new Client({
 
 client.commands = new Collection();
 client.userData = userData;
+client.starredMessages = [];
 
 const commandFiles = fs
   .readdirSync("./commands")
